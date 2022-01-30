@@ -31,36 +31,45 @@ var questions = [
   var questionEl = document.querySelector("#question");
   var optionListEl = document.querySelector("#option-list");
   var questionResultEl = document.querySelector("#question-result");
+  var questionSection = document.querySelector("#question-section");
   var timerEl = document.querySelector("#timer");
-  var submitButton = document.querySelector("#submit");
-
+  var quizOverSection = document.querySelector("#quiz-over");
   
   //which question we are looking at
   var questionIndex = 0;
   //track which questions are correct
   var correctCount = 0;
   
-  var time = 60;
+  var time = 45;
   var intervalId;
   
 function startQuiz() {
   welcome.classList.add("hide");
-  var questionSection = document.querySelector("#question-section");
+  // var questionSection = document.querySelector("#question-section");
   questionSection.classList.remove("hide");
 
   renderQuestion();
 }
-
+// Adds elements after quiz ends
   function endQuiz() {
-    var quizOverSection = document.querySelector("#quiz-over");
-    quizOverSection.classList.remove("hide");
-
     clearInterval(intervalId);
     var body = document.body;
+    body.classList.add("end-game");
     body.innerHTML = "Quiz over, You scored " + correctCount;
 
-    // var quizOverSection = document.querySelector("#quiz-over");
-    // quizOverSection.innerHTML = "Quiz over, You scored " + correctCount;
+    var initialsEl = document.createElement("form");
+    initialsEl.textContent = "Insert Initials";
+    initialsEl.className = "player-initials";
+    initialsEl.innerHTML = "<input>"; 
+    body.appendChild(initialsEl);
+
+    var submitButtonEl = document.createElement("button");
+    submitButtonEl.textContent = "Submit Score";
+    submitButtonEl.className = "submit-btn";
+    submitButtonEl.innerHTML = "<button>";
+    body.appendChild(submitButtonEl);
+
+    gameScores();
   }
   
   function updateTime() {
@@ -117,34 +126,30 @@ function startQuiz() {
         timerEl.textContent = time;
       }
     }
-    setTimeout(nextQuestion, 2000);
+    setTimeout(nextQuestion, 1500);
   }
-
-  function submitButton() {
-    var submitButtonEl = document.getElementById("#submit");
-    submitButtonEl.classList.add("submit-btn");
+  var gameScores = function() {
+    localStorage.setItem('allScores', JSON.stringify(correctCount));
+    JSON.parse(localStorage.getItem('allScores'));
+    console.log(gameScores);
+  
+    var initials = ""
+    var score = 5
+  
+    var allScores =[];
+  
+    var newScore = {
+      'initials': initials,
+      'score': score
+    }
+  
+    allScores.push(newScore)
   }
-  
-
-  // var createTaskActions = function (taskId) {
-  //   // create container to hold elements
-  //   var actionContainerEl = document.createElement("div");
-  //   actionContainerEl.className = "task-actions";
-  
-  //   // create edit button
-  //   var editButtonEl = document.createElement("button");
-  //   editButtonEl.textContent = "Edit";
-  //   editButtonEl.className = "btn edit-btn";
-  //   editButtonEl.setAttribute("data-task-id", taskId);
-  //   actionContainerEl.appendChild(editButtonEl);
   
   //renderQuestion();
 optionListEl.addEventListener("click", checkAnswer);
 startButton.addEventListener("click", startQuiz);
+submitButtonEl.addEventListener("click",gameScores);
 
 
 
-allScores.push(newScore)
-
-localStorage.setItem('allScores', JSON.stringify(allScores));
-JSON.parse(localStorage.getItem('allScores'));

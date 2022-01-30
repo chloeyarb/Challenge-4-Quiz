@@ -70,7 +70,25 @@ h1 {
     cursor: pointer;
     text-shadow: 0 0 45px white;
 }
+#question-result {
+    text-align: center;
+    font-size: 25px;
+    color: #EDC344;
+}
 .change-button {
     display: flex;
     justify-self: center;
 }    
+.end-game {
+    text-align: center;
+}
+.player-initials {
+    color: black;
+}
+.submit-btn {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
