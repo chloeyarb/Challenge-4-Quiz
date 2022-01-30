@@ -1,0 +1,76 @@
+* {
+    margin: auto;
+    padding: 0;
+}
+body {
+   background-image: url(../assets/images/background-image.jpg);   
+   min-width: 100%;
+   min-height: 100%;
+   background-color: black;
+   color: white; 
+   font-family:fantasy;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}  
+h1 {
+    font-size: 75px;
+    text-shadow: 0 0 50px ;
+}
+.welcome-intro {
+    text-align: center;
+}
+.welcome-intro h3{
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    font-size: 25px;
+    margin-top: 20px;
+}
+.button {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#start-button {
+    font-size: 20px;
+}
+#timer {
+    display: flex;
+    justify-content: center;
+}
+.hide {
+    display: none;
+  }
+#question {
+    font-family: 'Courier New', Courier, monospace;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    text-align: center;
+    font-size: 45px;
+}
+.choices {
+    font-family: 'Courier New', Courier, monospace;
+    list-style: none;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
+    padding: 10px;
+}  
+.choices:hover {
+    cursor: pointer;
+    text-shadow: 0 0 45px white;
+}
+.change-button {
+    display: flex;
+    justify-self: center;
+}    
